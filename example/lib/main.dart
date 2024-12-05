@@ -98,6 +98,23 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  Future<void> obtenerUrlId() async {
+    try {
+      String? qrStr = await _idsoberanaPlugin.obtenerIdentidad( {"documento": "12345678", "tipodoc_id": 1} );
+      if(qrStr == IdsoberanaPlugin.IDS_RET_CREARUSR){
+        print('crear usuario');
+      }
+      else if(qrStr == IdsoberanaPlugin.IDS_RET_CONFIGURANDO){
+        print('sistema config');
+      }
+      else {
+        print(qrStr);
+      }
+    } catch (e) {
+      print('Error al iniciar: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -124,6 +141,10 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 onPressed: crearUsuario,
                 child: Text('Crear Usuario'),
+              ),
+              ElevatedButton(
+                onPressed: obtenerUrlId,
+                child: Text('Obtener URL'),
               ),
             ],
           ),

@@ -113,9 +113,11 @@ class IdsoberanaPlugin {
       reg.crear();
       control = reg.obtenerId();
     }
-
+    int enteroUsrId = int.parse(usr['id'].toString());
+    int newCtrl = enteroUsrId + control;
+    print( "nctrl = {$newCtrl}");
     String ctrlHex = control.toRadixString(16).padLeft(2,'0');
-    String idHex = ( int.parse(usr['id']) + control).toRadixString(16).padLeft(6,'0');
+    String idHex = ( newCtrl ).toRadixString(16).padLeft(6,'0');
 
     await _actualizarUsuarioCfg(usr);
 
