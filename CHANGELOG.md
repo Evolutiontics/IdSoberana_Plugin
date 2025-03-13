@@ -12,4 +12,8 @@
 - Se actualizó el componente com.anndroid.application a 7.3.1
 - Se actializó el kotlin version a 2.1.10
 ### Solución de bugs
-- Se ajusta la función obtenerIdentidad para que entregue ddesde el primer uso la URL
+- Se ajusta la función obtenerIdentidad para que entregue desde el primer uso la URL
+
+## 0.0.4
+### Actualización
+- Se remueve información sensible en el código

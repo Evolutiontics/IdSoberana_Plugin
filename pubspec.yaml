@@ -1,6 +1,6 @@
 name: idsoberana_plugin
 description: "Conecta tu aplicación de forma segura a identidad soberana de Evolusign"
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/Evolutiontics/IdSoberana_Plugin
 
 environment:
