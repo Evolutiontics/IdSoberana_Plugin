@@ -258,17 +258,16 @@ class IdsoberanaPlugin {
 
       final datos = jsonDecode( sMyId.body );
       if (datos.isNotEmpty)  {
-        datos.forEach((identidad) async {
-          try{
-            bool addOk = await _agregarUsuarioCfg( identidad , idUsr['fileexists']);
-            if(addOk){
-              return await _obtenerURL( identidad );
+        for (var identidad in datos) {
+          try {
+            bool addOk = await _agregarUsuarioCfg(identidad, idUsr['fileexists']);
+            if (addOk) {
+              return await _obtenerURL(identidad);
             }
-          }catch(e){
+          } catch (e) {
             rethrow;
           }
-
-        });
+        }
       }
       else{
         codErr = IDS_RET_CREARUSR;

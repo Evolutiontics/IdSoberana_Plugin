@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
       platformVersion = 'Failed to get platform version.';
     }
 
-    _idsoberanaPlugin.bearerToken = '<AQUI_VA_EL_TOKEN>';
+    _idsoberanaPlugin.bearerToken = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkA1IgBu5XmkgBDLMAFBYxi5zSxMafFZCku2wGle3M5QoEKuSauStsG7qLOnLDE1poufzGUShiexqFkwTdKBg8HDxPjphEpdw76878Rpi8rf7BvIjBdOMpYoYxc65zFDyMtifdWcubfoUbxO5kJI7GRH7mdjpgVoUUxc8XpQFZvYKLSbGPqDp80WlclVxzyHUU1Fb0KPcTuCXVYijikbg41Cx8rlLaxYZb1rpxm0rqAPb033P8wUVUVsXYfDIO4DjI1oWhNmh6x2unTJBbnnbvvRPLAM5GVmfgjp6cxSO2CRk8GgxSBMJWF8xPLjoEYNGouNwjoQIDAQAB';
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
