@@ -17,3 +17,8 @@
 ## 0.0.4
 ### Actualización
 - Se remueve información sensible en el código
+
+## 0.0.5
+### Nuevas habilidades
+- Se agregan nuevos campos que pueden ser almacenados en la base de datos
+- Se agrega soporte para QR con habilidad de entregar información temporal
