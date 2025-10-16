@@ -148,6 +148,18 @@ class IdsoberanaPlugin {
     }
   }
 
+  Future<http.Response> _srvVigenciaVista(dynamic params, Future<String?> oUrl) async {
+    String endpoint = "VigenciaDatos";
+    params['url'] = await oUrl;
+
+    try{
+      return await _wsconsume( ws: endpoint, params: params );
+    }
+    catch(e){
+      rethrow;
+    }
+  }
+
   Future<dynamic> _idExists(dynamic params) async {
     //final directory = await getApplicationDocumentsDirectory();
     //final file = File('${directory.path}/$credenciafile');
@@ -244,6 +256,8 @@ class IdsoberanaPlugin {
   }
 
   Future<String?> obtenerIdentidad(dynamic params) async {
+    bool crearvalidez = (params is Map && params.containsKey('validez'));
+
     dynamic idUsr = await _idExists(params);
     String codErr = IDS_RET_CONFIGURANDO;
 
@@ -262,7 +276,15 @@ class IdsoberanaPlugin {
           try {
             bool addOk = await _agregarUsuarioCfg(identidad, idUsr['fileexists']);
             if (addOk) {
-              return await _obtenerURL(identidad);
+              Future<String?> oUrl = _obtenerURL( params );
+              if (crearvalidez) {
+                // Si se requiere hacer debug:
+                //http.Response vig = await _srvVigenciaVista( params, oUrl );
+                //String resvig = vig.body;
+                //print(resvig);
+                await _srvVigenciaVista( params, oUrl );
+              }
+              return await oUrl;
             }
           } catch (e) {
             rethrow;
@@ -274,7 +296,15 @@ class IdsoberanaPlugin {
       }
     } else {
       params['id'] = idUsr['id'];
-      return await _obtenerURL( params );
+      Future<String?> oUrl = _obtenerURL( params );
+      if (crearvalidez) {
+        // Si se requiere hacer debug:
+        //http.Response vig = await _srvVigenciaVista( params, oUrl );
+        //String resvig = vig.body;
+        //print(resvig);
+        await _srvVigenciaVista( params, oUrl );
+      }
+      return await oUrl;
     }
     return codErr;
   }
@@ -307,11 +337,17 @@ class IdsoberanaPlugin {
     int ciudadResidenciaId = 1,
     String eps = "",
     String ars = "",
-}) async {
+    String codigo = "",
+    String clienteid = "",
+    int tipousuario = 1,
+    String facultad = "",
+    String programa = "",
+  }) async {
     String endpoint = "CrearUsuarioDesdeApp";
+    String docs = documento.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '').toLowerCase();
     Map<dynamic, dynamic> parametros = {
       'tipodoc_id': tipodoc_id,
-      'documento': documento.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '').toLowerCase(),
+      'documento': docs,
       'lugarescedula_id': lugarescedulaId,
       'nombres': nombres,
       'apellidos': apellidos,
@@ -327,6 +363,11 @@ class IdsoberanaPlugin {
       'loc_lugares_id': ciudadResidenciaId,
       'eps': eps,
       'ars': ars,
+      'codigo' : (codigo == "" ? docs : codigo),
+      'clienteid' : clienteid,
+      'tipousuario' : tipousuario,
+      'facultad' : facultad,
+      'programa' : programa,
     };
 
     String jsonString = jsonEncode(parametros);

@@ -12,8 +12,6 @@ public class IdsoberanaPlugin: NSObject, FlutterPlugin {
     switch call.method {
     case "getPlatformVersion":
       result("iOS " + UIDevice.current.systemVersion)
-    case "getTest":
-      result("Test iOS")
     default:
       result(FlutterMethodNotImplemented)
     }

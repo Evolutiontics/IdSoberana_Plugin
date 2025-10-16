@@ -5,9 +5,9 @@
 Pod::Spec.new do |s|
   s.name             = 'idsoberana_plugin'
   s.version          = '0.0.1'
-  s.summary          = 'Conecta tu aplicación de forma segura a identidad soberana de Evolusign'
+  s.summary          = 'Conecta tu aplicación de forma segura a identidad soberana de EvolusignConecta tu aplicación de forma segura a identidad soberana de Evolusign'
   s.description      = <<-DESC
-Conecta tu aplicación de forma segura a identidad soberana de Evolusign
+Conecta tu aplicación de forma segura a identidad soberana de EvolusignConecta tu aplicación de forma segura a identidad soberana de Evolusign
                        DESC
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }
@@ -15,7 +15,7 @@ Conecta tu aplicación de forma segura a identidad soberana de Evolusign
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.platform = :ios, '12.0'
+  s.platform = :ios, '13.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
