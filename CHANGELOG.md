@@ -22,3 +22,7 @@
 ### Nuevas habilidades
 - Se agregan nuevos campos que pueden ser almacenados en la base de datos
 - Se agrega soporte para QR con habilidad de entregar información temporal
+
+## 0.0.6
+### Solución bugs
+- Se arreglan bugs al momento de envío de datos
